@@ -10,12 +10,6 @@ function csvToJson($csvUrl) {
         fclose($handle);
     }
 
-    // Assuming the first row of the CSV contains the column headers
-    $headers = array_shift($csvData);
-
-    return json_encode($jsonArray);
-}
-
 $csvUrl = 'datapribadi.csv';
 $jsonData = csvToJson($csvUrl);
 
