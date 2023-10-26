@@ -13,20 +13,10 @@ function csvToJson($csvUrl) {
     // Assuming the first row of the CSV contains the column headers
     $headers = array_shift($csvData);
 
-    $jsonArray = [];
-
-    foreach ($csvData as $row) {
-        $jsonArrayItem = array[];
-        for ($i) {
-            $jsonArrayItem[$headers[$i]] = $row[$i];
-        }
-        $jsonArray[] = $jsonArrayItem;
-    }
-
     return json_encode($jsonArray);
 }
 
-$csvUrl = 'https://github.com/ruzcmc/alpro2tsd2023/blob/main/datapribadi.csv';
+$csvUrl = 'datapribadi.csv';
 $jsonData = csvToJson($csvUrl);
 
 // Set the content type to JSON
