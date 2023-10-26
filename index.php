@@ -1,21 +1,16 @@
 <?php
+$fp = fopen('datapribadi.csv', 'r');
+$headers = fgetcsv($fp); // Get column headers
 
-function csvToJson($csvUrl) {
-    $csvData = [];
-    
-    if (($handle = fopen($csvUrl, 'r')) !== false) {
-        while (($row = fgetcsv($handle)) !== false) {
-            $csvData[] = $row;
-        }
-        fclose($handle);
-    }
+$csvdata = array();
+while (($row = fgetcsv($fp)) !== false) {
+    $data[] = array_combine($headers, $row);
+}
+fclose($fp);
 
-$csvUrl = 'datapribadi.csv';
-$jsonData = csvToJson($csvUrl);
+$jsonData = json_encode($csvdata, JSON_PRETTY_PRINT);
 
-// Set the content type to JSON
 header('Content-Type: application/json');
 
-// Output the JSON data
-echo $jsonData;
+echo $json;
 ?>
